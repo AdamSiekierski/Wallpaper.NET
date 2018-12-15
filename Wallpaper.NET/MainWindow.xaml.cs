@@ -60,7 +60,7 @@ namespace Wallpaper.NET
         {
             // Get the date
             DateTime today = DateTime.Today;
-            //DateTime today = new DateTime(2019, 04, 19); /// That is a backdoor for testing
+            ///DateTime today = new DateTime(2019, 04, 19); /// That is a backdoor for testing
             string month = today.ToString("MM");
             float day = float.Parse(today.ToString("dd"));
 
@@ -71,8 +71,8 @@ namespace Wallpaper.NET
             /// Christmas
             if (month == "12" && day <= 24)
             {
-                string christmasPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Christmas"); // Create the path
-                Properties.Resources.Christmas.Save(christmasPath, System.Drawing.Imaging.ImageFormat.Png); // Save a resource to Temp directory
+                string christmasPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "ChristmasWallpaper.png"); // Create the path
+                Properties.Resources.Christmas.Save(christmasPath, System.Drawing.Imaging.ImageFormat.Png); // Save resource to the Temp directory
                 // User interface
                 textBox.Text = "Christmas";
                 image.Source = new BitmapImage(new Uri(christmasPath));
@@ -82,7 +82,7 @@ namespace Wallpaper.NET
             /// Easter
             else if (easterCalculator.EasterSunday(today.Year).AddDays(-7) <= today && easterCalculator.EasterSunday(today.Year) >= today)
             {
-                string easterPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Easter"); // Create the path
+                string easterPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "EasterWallpaper.png"); // Create the path
                 Properties.Resources.Easter.Save(easterPath, System.Drawing.Imaging.ImageFormat.Png); // Save resource to the Temp directory
                 // User interface
                 textBox.Text = "Easter";
