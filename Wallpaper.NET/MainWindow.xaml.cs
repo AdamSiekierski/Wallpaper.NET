@@ -58,8 +58,8 @@ namespace Wallpaper.NET
         private void setWallpaper()
         {
             // Get the date
-            DateTime today = DateTime.Today;
-            ///DateTime today = new DateTime(2018, 10, 22);
+            ///DateTime today = DateTime.Today;
+            DateTime today = new DateTime(2018, 10, 22);
             string month = today.ToString("MM");
             float day = float.Parse(today.ToString("dd"));
 
