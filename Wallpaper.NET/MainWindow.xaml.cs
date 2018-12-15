@@ -31,6 +31,7 @@ namespace Wallpaper.NET
         }
 
         TrayClass trayClass = new TrayClass();
+        EasterCalculator easterCalculator = new EasterCalculator();
 
         // When the window loads
         void OnLoad(object sender, RoutedEventArgs e)
@@ -59,7 +60,7 @@ namespace Wallpaper.NET
         {
             // Get the date
             DateTime today = DateTime.Today;
-            ///DateTime today = new DateTime(2018, 10, 22);
+            //DateTime today = new DateTime(2019, 04, 19); /// That is a backdoor for testing
             string month = today.ToString("MM");
             float day = float.Parse(today.ToString("dd"));
 
@@ -77,6 +78,17 @@ namespace Wallpaper.NET
                 image.Source = new BitmapImage(new Uri(christmasPath));
                 // Set the wallpaper
                 SetDesktopWallpaper(christmasPath);
+            }
+            /// Easter
+            else if (easterCalculator.EasterSunday(today.Year).AddDays(-7) <= today && easterCalculator.EasterSunday(today.Year) >= today)
+            {
+                string easterPath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "Easter"); // Create the path
+                Properties.Resources.Easter.Save(easterPath, System.Drawing.Imaging.ImageFormat.Png); // Save resource to the Temp directory
+                // User interface
+                textBox.Text = "Easter";
+                image.Source = new BitmapImage(new Uri(easterPath));
+                // Set the wallpaper
+                SetDesktopWallpaper(easterPath);
             }
             /// Other dates
             else
@@ -130,6 +142,7 @@ namespace Wallpaper.NET
             }
         }
 
+        // Change the default wallpaper
         private void button_Click(object sender, RoutedEventArgs e)
         {
             chooseWallpaper(false);

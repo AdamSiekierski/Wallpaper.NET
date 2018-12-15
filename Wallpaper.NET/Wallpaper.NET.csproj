@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="EasterCalculator.cs" />
     <Compile Include="TrayClass.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -150,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Wallpapers\Christmas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Wallpapers\Easter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
