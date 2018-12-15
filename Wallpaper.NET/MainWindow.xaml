@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Loaded="OnLoad"
         Closing="HideNotClose"
-        Title="Wallpaper.NET" Height="450" Width="376.471" ResizeMode="NoResize">
+        Title="Wallpaper.NET" Height="450" Width="376.471" ResizeMode="NoResize" Icon="Resources/TrayIcon.ico">
     <Grid>
         <Label x:Name="label" Content="Wallpaper.NET" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" FontSize="24"/>
         <Label x:Name="label1" Content="by Adam Siekierski" HorizontalAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" IsEnabled="False"/>
