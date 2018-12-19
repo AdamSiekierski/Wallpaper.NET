@@ -4,6 +4,9 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Wallpaper.NET;
+using System.Windows;
 
 namespace Wallpaper.NET
 {
@@ -22,7 +25,8 @@ namespace Wallpaper.NET
         public void setWallpaper()
         {
             // Get the date
-            DateTime today = DateTime.Today;
+            ///DateTime today = DateTime.Today;
+            DateTime today = new DateTime(2018, 12, 27);
             string month = today.ToString("MM");
             float day = float.Parse(today.ToString("dd"));
             // Set the wallpaper appropriate to the date
@@ -64,6 +68,30 @@ namespace Wallpaper.NET
         {
             SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, filename,
                 SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+        }
+
+        // Choose the default wallpeper dialog
+        public void chooseWallpaper(bool FirstLaunch)
+        {
+            OpenFileDialog dlg = new OpenFileDialog(); // Create the file dialog object
+
+            dlg.Filter = "Image files|*.jpeg; *.png; *.jpg; *.gif"; // Set filters for image file types
+            dlg.Title = "Choose default wallpaper (Only the first use!)"; // Set the title of dialog
+
+            DialogResult result = dlg.ShowDialog(); // Show the dialog box
+            if (result == DialogResult.Yes)
+            {
+                Properties.Settings.Default.DefaultWallpaper = dlg.FileName;
+                Properties.Settings.Default.Save();
+                MainWindow.appWindow.appControl();
+            }
+            else
+            {
+                if (FirstLaunch == true)
+                {
+                    System.Windows.Application.Current.Shutdown();
+                }
+            }
         }
 
         public string currentSeason;

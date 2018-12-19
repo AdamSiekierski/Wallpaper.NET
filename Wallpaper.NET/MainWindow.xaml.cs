@@ -24,10 +24,12 @@ namespace Wallpaper.NET
 {
     public partial class MainWindow : Window
     {
+        public static MainWindow appWindow;
 
         public MainWindow()
         {
             InitializeComponent();
+            appWindow = this;
         }
 
         TrayClass trayClass = new TrayClass();
@@ -51,7 +53,7 @@ namespace Wallpaper.NET
 
 
         // Function to set the prorper wallpaper, and controll the interface
-        private void appControl()
+        public void appControl()
         {
             // Get the date
             DateTime today = DateTime.Today;
@@ -75,37 +77,14 @@ namespace Wallpaper.NET
             MessageBoxResult msgbox = MessageBox.Show("On first launch you need to choose the default wallpaper", "Default wallpaper", MessageBoxButton.OK, MessageBoxImage.Question);
 
             // Call the function for the default wallpaper file dialog; when didn't choose anything, close the app
-            chooseWallpaper(true);
+            wallpaperControl.chooseWallpaper(true);
         }
 
-        // Choose the default wallpeper dialog
-        private void chooseWallpaper(bool FirstLaunch)
-        {
-            OpenFileDialog dlg = new OpenFileDialog(); // Create the file dialog object
-
-            dlg.Filter = "Image files|*.jpeg; *.png; *.jpg; *.gif"; // Set filters for image file types
-            dlg.Title = "Choose default wallpaper (Only the first use!)"; // Set the title of dialog
-
-            Nullable<bool> result = dlg.ShowDialog(); // Show the dialog box
-            if (result == true)
-            {
-                Properties.Settings.Default.DefaultWallpaper = dlg.FileName;
-                Properties.Settings.Default.Save();
-                appControl();
-            }
-            else
-            {
-                if (FirstLaunch == true)
-                {
-                    Application.Current.Shutdown();
-                }
-            }
-        }
 
         // Change the default wallpaper
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            chooseWallpaper(false);
+            wallpaperControl.chooseWallpaper(false);
             appControl();
         }
 
