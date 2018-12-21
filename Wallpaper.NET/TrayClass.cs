@@ -2,7 +2,7 @@
 using System.Windows;
 using Wallpaper.NET;
 
-namespace Tray
+namespace Wallpaper.NET
 {
     public class TrayClass
     {

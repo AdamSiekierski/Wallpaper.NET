@@ -25,8 +25,8 @@ namespace Wallpaper.NET
         public void setWallpaper()
         {
             // Get the date
-            ///DateTime today = DateTime.Today;
-            DateTime today = new DateTime(2018, 12, 27);
+            DateTime today = DateTime.Today;
+            ///DateTime today = new DateTime(2018, 12, 27);
             string month = today.ToString("MM");
             float day = float.Parse(today.ToString("dd"));
             // Set the wallpaper appropriate to the date

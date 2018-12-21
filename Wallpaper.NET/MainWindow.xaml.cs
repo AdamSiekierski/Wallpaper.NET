@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.Diagnostics;
-using Tray;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Drawing;
