@@ -133,6 +133,7 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="readme.md" />
     <None Include="Wallpaper.NET_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
